@@ -1,5 +1,7 @@
 // Remove shorts from Youtube home page
-var shorts = document.querySelector("div#contents.style-scope.ytd-rich-grid-renderer")
-shorts.remove()
 
-console.log("Shorts removed.");
+// Select elements that match the CSS selector
+var shortsSection = document.querySelector('ytd-rich-section-renderer.style-scope:has(span[id="title"])')
+
+// Remove element
+shortsSection.remove()
