@@ -1,5 +1,14 @@
 // Background code
 
+browser.storage.local.get("removedShorts").then(result => {
+
+  if(Object.keys(result).length === 0) {
+    browser.storage.local.set({ "removedShorts": 0 });
+    localStorage.setItem('removedShorts', '0');
+  }
+})
+
+
 // This function listens for completed web requests and checks if they are of type "xmlhttprequest" and method "POST"
 function listener(request) {
 
