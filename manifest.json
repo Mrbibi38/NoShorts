@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "NoShorts",
-  "version": "1.1",
+  "version": "1.2",
   "homepage_url": "https://github.com/Mrbibi38/NoShorts",
   "description": "Remove the shorts from the Subscriptions and Home tabs",
 
@@ -11,6 +11,12 @@
     "128": "icons/NoShorts128.png",
     "96": "icons/NoShorts96.png",
     "64": "icons/NoShorts64.png"
+  },
+
+  "browser_action": {
+    "default_icon": "icons/NoShorts64.png",
+    "default_title": "NoShorts",
+    "default_popup": "src/popup/popup.html"
   },
 
   "permissions": [
