@@ -1,11 +1,11 @@
-let currentTextDiv = document.querySelector(".currentText")
-let totalTextDiv = document.querySelector(".totalText")
+let currentTextDiv = document.querySelector(".current-text")
+let totalTextDiv = document.querySelector(".total-text")
 
 
 window.onload = function() {
   browser.storage.local.get().then(result => {
     console.log(result);
-    currentTextDiv.innerText = "Shorts removed : " + result.currentRemoved
-    totalTextDiv.innerText = "Total removed : " + result.totalRemoved
+    currentTextDiv.innerText = "Current page : " + result.current
+    totalTextDiv.innerText = "Total : " + result.total
   })
 }
