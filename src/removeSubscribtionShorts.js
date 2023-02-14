@@ -7,39 +7,38 @@ function sleep(ms) {
 
 // The main function is an async function that removes the shorts videos
 async function main() {
-<<<<<<< HEAD
-  await sleep(500)
-=======
-  await sleep(1000)
->>>>>>> b0033574ce0e03a6e23db73ac1340c1669032069
+  await sleep(250)
 
-    // Select all elements that match the CSS selector
-    var shortsList = document.querySelectorAll("ytd-item-section-renderer:has(a[href*=shorts])")
-    var shortsGrid = document.querySelectorAll("ytd-grid-video-renderer:has(a[href*=shorts])")
-    
+  let gettingStoredStats = browser.storage.local.get();
+
+  gettingStoredStats.then(results => {
+
+  // Select all elements that match the CSS selector
+  var shortsList = document.querySelectorAll("ytd-item-section-renderer:has(a[href*=shorts])")
+  var shortsGrid = document.querySelectorAll("ytd-grid-video-renderer:has(a[href*=shorts])")
+  let countRemovedShorts = shortsList.length + shortsGrid.length
+  console.log(countRemovedShorts);
+
+  if (countRemovedShorts != 0) {
     // Remove all elements in shortsList
     shortsList.forEach(short => short.remove())
     // Remove all elements in shortsGrid
-<<<<<<< HEAD
     shortsGrid.forEach(short => short.remove())   
-    
-    let countRemovedShorts = shortsList.length + shortsGrid.length
-    console.log(countRemovedShorts + " shorts removed!");
+          
+    console.log(countRemovedShorts + " shorts removed!");      
 
-    browser.storage.local.get().then(result => {
-      let totalRemoved = result.totalRemoved;
-      console.log("totalRemovedAv : " + totalRemoved);
-
-      totalRemoved += countRemovedShorts;
-
-      console.log("totalRemovedAp : " + totalRemoved);
-
-      browser.storage.local.set({ totalRemoved: totalRemoved });
-      browser.storage.local.set({ currentRemoved: countRemovedShorts });
-    });
-=======
-    shortsGrid.forEach(short => short.remove())    
->>>>>>> b0033574ce0e03a6e23db73ac1340c1669032069
+    // Initialize the saved stats if not yet initialized.
+    console.log(results);
+    if (Object.keys(results).length === 0) {
+      results = { total: 0, current: 0 }
+      } else {
+        results.total += countRemovedShorts
+        results.current += countRemovedShorts
+      }
+        console.log(results);
+        browser.storage.local.set(results)
+      }
+  })
 }
 
 // Call the main function to remove the shorts

@@ -1,18 +1,18 @@
 // Background code
 
-// browser.storage.local.clear()
+let gettingStoredStats = browser.storage.local.get();
 
-browser.storage.local.get("totalRemoved", function(result) {
-  if (!result.totalRemoved) {
-    browser.storage.local.set({ totalRemoved : 0 });
-  }
-});
+gettingStoredStats.then(results => {
 
-browser.storage.local.set({ currentRemoved : 0 });
-
-browser.storage.local.get("totalRemoved", function(result) {
-  console.log(result.totalRemoved);
-});
+    // Initialize the saved stats if not yet initialized.
+    if (Object.keys(results).length === 0) {
+      results = { total: 0, current: 0 }
+      } else {
+        results.current = 0
+      }
+        console.log(results);
+        browser.storage.local.set(results)
+})
 
 // This function listens for completed web requests and checks if they are of type "xmlhttprequest" and method "POST"
 function listener(request) {
