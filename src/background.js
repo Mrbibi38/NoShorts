@@ -1,5 +1,19 @@
 // Background code
 
+// browser.storage.local.clear()
+
+browser.storage.local.get("totalRemoved", function(result) {
+  if (!result.totalRemoved) {
+    browser.storage.local.set({ totalRemoved : 0 });
+  }
+});
+
+browser.storage.local.set({ currentRemoved : 0 });
+
+browser.storage.local.get("totalRemoved", function(result) {
+  console.log(result.totalRemoved);
+});
+
 // This function listens for completed web requests and checks if they are of type "xmlhttprequest" and method "POST"
 function listener(request) {
 
