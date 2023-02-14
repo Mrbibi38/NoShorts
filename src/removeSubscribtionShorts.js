@@ -7,7 +7,11 @@ function sleep(ms) {
 
 // The main function is an async function that removes the shorts videos
 async function main() {
+<<<<<<< HEAD
   await sleep(500)
+=======
+  await sleep(1000)
+>>>>>>> b0033574ce0e03a6e23db73ac1340c1669032069
 
     // Select all elements that match the CSS selector
     var shortsList = document.querySelectorAll("ytd-item-section-renderer:has(a[href*=shorts])")
@@ -16,6 +20,7 @@ async function main() {
     // Remove all elements in shortsList
     shortsList.forEach(short => short.remove())
     // Remove all elements in shortsGrid
+<<<<<<< HEAD
     shortsGrid.forEach(short => short.remove())   
     
     let countRemovedShorts = shortsList.length + shortsGrid.length
@@ -32,6 +37,9 @@ async function main() {
       browser.storage.local.set({ totalRemoved: totalRemoved });
       browser.storage.local.set({ currentRemoved: countRemovedShorts });
     });
+=======
+    shortsGrid.forEach(short => short.remove())    
+>>>>>>> b0033574ce0e03a6e23db73ac1340c1669032069
 }
 
 // Call the main function to remove the shorts
