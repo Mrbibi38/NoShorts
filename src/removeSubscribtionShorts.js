@@ -17,7 +17,6 @@ async function main() {
   var shortsList = document.querySelectorAll("ytd-item-section-renderer:has(a[href*=shorts])")
   var shortsGrid = document.querySelectorAll("ytd-grid-video-renderer:has(a[href*=shorts])")
   let countRemovedShorts = shortsList.length + shortsGrid.length
-  console.log(countRemovedShorts);
 
   if (countRemovedShorts != 0) {
     // Remove all elements in shortsList
@@ -28,14 +27,12 @@ async function main() {
     console.log(countRemovedShorts + " shorts removed!");      
 
     // Initialize the saved stats if not yet initialized.
-    console.log(results);
     if (Object.keys(results).length === 0) {
       results = { total: 0, current: 0 }
       } else {
         results.total += countRemovedShorts
         results.current += countRemovedShorts
       }
-        console.log(results);
         browser.storage.local.set(results)
       }
   })

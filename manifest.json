@@ -1,8 +1,8 @@
 {
 
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "NoShorts",
-  "version": "1.2",
+  "version": "1.0.0",
   "homepage_url": "https://github.com/Mrbibi38/NoShorts",
   "description": "Remove the shorts from the Subscriptions and Home tabs",
 
@@ -13,22 +13,38 @@
     "64": "icons/NoShorts64.png"
   },
 
-  "browser_action": {
-    "default_icon": "icons/NoShorts64.png",
+  "action": {
+    "default_icon": {
+      "64": "icons/NoShortsDark64.png",
+      "96": "icons/NoShortsDark64.png",
+      "128": "icons/NoShortsDark64.png"
+    },
     "default_title": "NoShorts",
-    "default_popup": "src/popup/popup.html"
+    "default_popup": "src/popup/popup.html",
+    "theme_icons": [{
+      "light" :"icons/NoShortsLight64.png",
+      "dark" :"icons/NoShortsDark64.png",
+      "size" : 64
+    },{
+      "light" :"icons/NoShortsLight96.png",
+      "dark" :"icons/NoShortsDark96.png",
+      "size" : 96
+    }]
   },
 
   "permissions": [
     "storage",
     "activeTab",
     "webRequest",
-    "webRequestBlocking",
+    "webRequestBlocking"
+  ],
+
+  "host_permissions": [
     "https://www.youtube.com/*"
   ],
 
   "background": {
-    "scripts": ["src/background.js"]
+    "service_worker": ["src/background.js"]
   },
 
   "content_scripts": [
